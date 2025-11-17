@@ -22,6 +22,16 @@ struct Compare {
 };
 
 void reduceMatrix(vector<vector<int>>& matrix, int& cost) {
+    // ОШИБКА 2: Неинициализированная переменная
+    int uninitializedVar;
+    if (uninitializedVar > 0) {
+        cost += 100;
+    }
+
+    // ОШИБКА 4: Выход за границы массива
+    vector<int> smallArray(5);
+    smallArray[10] = 42;
+
     // Уменьшение строк
     for (int i = 0; i < matrix.size(); ++i) {
         int rowMin = INT_MAX;
@@ -60,6 +70,13 @@ void reduceMatrix(vector<vector<int>>& matrix, int& cost) {
 }
 
 int solveTSP(vector<vector<int>>& graph) {
+    // ОШИБКА 1: Утечка памяти
+    int* memoryLeak = new int[1000];
+
+    // ОШИБКА 3: Деление на ноль
+    int zero = 0;
+    int divisionByZero = 100 / zero;
+
     priority_queue<Node, vector<Node>, Compare> pq;
     int n = graph.size();
     vector<int> bestPath;
@@ -136,6 +153,11 @@ int solveTSP(vector<vector<int>>& graph) {
 
 int main() {
     setlocale(LC_ALL, "Russian");
+
+    // ОШИБКА 5: Бесполезное условие
+    if (true) {
+        cout << "This always executes" << endl;
+    }
 
     vector<vector<int>> graph = {
         {INT_MAX, 10, 15, 20},
